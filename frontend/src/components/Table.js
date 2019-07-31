@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import key from "weak-key";
 
+import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
+
 const Table = ({ data }) =>
   !data.length ? (
     <p>Nothing to show</p>
@@ -10,7 +12,7 @@ const Table = ({ data }) =>
       <h2 className="subtitle">
         Showing <strong>{data.length} items</strong>
       </h2>
-      <table className="table is-striped">
+      {/* <table className="table is-striped">
         <thead>
           <tr>
             {Object.entries(data[0]).map(el => <th key={key(el)}>{el[0]}</th>)}
@@ -23,7 +25,22 @@ const Table = ({ data }) =>
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
+      <MDBTable btn>
+      <MDBTableHead>
+        <tr>
+            {Object.entries(data[0]).map(el => <th key={key(el)}>{el[0]}</th>)}
+        </tr>
+      </MDBTableHead>
+      <MDBTableBody>
+        {data.map(el => (
+            <tr key={el.id}>
+              {Object.entries(el).map(el => <td key={key(el)}>{el[1]}</td>)}
+            </tr>
+          ))}
+      </MDBTableBody>
+    </MDBTable>
+      
     </div>
   );
 Table.propTypes = {
