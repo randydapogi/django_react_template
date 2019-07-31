@@ -1,0 +1,4 @@
+node_modules/
+package-lock.json
+frontend/static/frontend/main.js
+db.sqlite3
